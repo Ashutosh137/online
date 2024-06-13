@@ -14,7 +14,7 @@
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd app && npm install",
     "build:frontend": "cd app && npm run build",
-    "build": "\"npm run install:backend\" && \"npm run install:frontend\" && \"npm run build:backend\" && \"npm run build:frontend\" "
+    "build": "npm run install:backend && npm run install:frontend && npm run build:backend && npm run build:frontend"
   
   },
   "author": "",
