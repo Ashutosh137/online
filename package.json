@@ -1,0 +1,19 @@
+{
+  "name": "online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev": "concurrently \"npm run backend-dev\" \"npm run frontend\"",
+    "backend": "cd backend && npm start",
+    "backend-dev": "cd backend && npm run dev",
+    "frontend": "cd app && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
