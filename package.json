@@ -11,9 +11,11 @@
     "frontend": "cd app && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:backend": "cd backend && npm run build",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd app && npm install",
     "build:frontend": "cd app && npm run build",
-   "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\""
-
+    "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
+    "install": "concurrently \"npm run install:backend\" \"npm run install:frontend\""
   },
   "author": "",
   "license": "ISC",
