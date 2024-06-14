@@ -69,7 +69,7 @@ export const {
 export const Signin = (email, password) => async (dispatch) => {
   dispatch(signinStart());
   try {
-    const data = await fetch("https://online-8yiq.onrender.com", {
+    const data = await fetch("https://online-8yiq.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -90,7 +90,7 @@ export const Signin = (email, password) => async (dispatch) => {
 export const signup = (email, password, username) => async (dispatch) => {
   dispatch(signupStart());
   try {
-    const data = await fetch("https://online-8yiq.onrender.com", {
+    const data = await fetch("https://online-8yiq.onrender.com/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, username }),
