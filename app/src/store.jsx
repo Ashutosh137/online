@@ -25,10 +25,7 @@ const darktheme = createTheme({
     text: {
       primary: "#ffffff",
     },
-  },
-  typography: {
-    fontFamily: "cursive",
-  },
+  }
 });
 
 const UseProvider = ({ children }) => {
