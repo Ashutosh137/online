@@ -14,7 +14,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" })); // Consider a more restrictive origin for production
+app.use(cors({ origin: "*" })); // Consider a more restrictive origin for production
 
 // Root route with potential optimization based on use case
 app.get("/", async (req, res) => {
