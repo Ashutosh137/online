@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Stack, Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { Signin,signup } from "../redux/userdata";
+import { Signin, signup } from "../redux/userdata";
 import { useNavigate } from "react-router-dom";
 // import FormDialog from "./forgetdialog";
 
@@ -16,7 +16,7 @@ function LoginComponent({ role = "signin" }) {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   const [name, setname] = useState("");
-//   const [forgetpassworddialog, setforgetpassworddialog] = useState(false);
+  //   const [forgetpassworddialog, setforgetpassworddialog] = useState(false);
 
   useEffect(() => {
     isLoggedIn && router("/");
@@ -57,6 +57,7 @@ function LoginComponent({ role = "signin" }) {
             InputLabelProps={{ style: { color: "primary" } }}
             type="text"
             placeholder="Name"
+            required
             value={name}
             onChange={(e) => {
               setname(e.target.value);
@@ -65,6 +66,7 @@ function LoginComponent({ role = "signin" }) {
         )}
         <TextField
           fullWidth
+          required
           id="email"
           label="Email id"
           InputLabelProps={{
@@ -82,6 +84,7 @@ function LoginComponent({ role = "signin" }) {
         <TextField
           id="password"
           fullWidth
+          required
           type="password"
           sx={{ placeholder: { color: "primary" } }}
           placeholder="Password"
@@ -98,7 +101,7 @@ function LoginComponent({ role = "signin" }) {
             sx={{ textDecoration: "none" }}
             mx="auto"
             onClick={() => {
-              setforgetpassworddialog(true);
+              // setforgetpassworddialog(true);
             }}
             variant="button"
             color="primary"
@@ -113,13 +116,7 @@ function LoginComponent({ role = "signin" }) {
           </Button>
         </Box>
       </Stack>
-      {/* {
-        <FormDialog
-          toggle={() => setforgetpassworddialog((prev) => !prev)}
-          open={forgetpassworddialog}
-        />
-      } */}
-      
+    
     </Fragment>
   );
 }

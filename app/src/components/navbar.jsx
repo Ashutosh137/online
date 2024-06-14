@@ -14,11 +14,14 @@ import {
   Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/userdata";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { isLoggedIn } = useSelector((state) => state.userdata);
+
+  const dispatch = useDispatch();
 
   const handleDrawerToggle = () => {
     setMenuOpen(!menuOpen);
@@ -62,7 +65,7 @@ function Navbar() {
               textDecoration: "none",
               ":hover": {
                 transform: "scale(1.04)",
-                borderBottom:"2px solid white",
+                borderBottom: "2px solid white",
                 transition: "transform 0.5s ease-in-out",
               },
             }}
@@ -94,8 +97,16 @@ function Navbar() {
           )}
         </Stack>
         {isLoggedIn && (
-          <Box mx={3} to={"/profile"} component={Link}>
-            <Avatar variant="circular" sx={{ width: 40, height: 40 }} />
+          <Box mx={3}>
+            <Button
+              onClick={() => {
+                dispatch(logout());
+              }}
+              variant="contained"
+              color="primary"
+            >
+              Logout
+            </Button>
           </Box>
         )}
       </Toolbar>
@@ -120,40 +131,14 @@ function Navbar() {
           Dashboard
         </Typography>
         <List>
-          <ListItem
-            sx={{
-              textDecoration: "none",
-              // color: palette.mode === "dark" ? "white" : "black",
-            }}
-            component={Link}
-            to="/"
-          >
-            <ListItemText primary="Quotes" />
-          </ListItem>
-          <ListItem
-            sx={{
-              textDecoration: "none",
-              // color: palette.mode === "dark" ? "white" : "black",
-            }}
-            component={Link}
-            to="/login"
-          >
-            <ListItemText primary="login" color="white" />
-          </ListItem>
-          <ListItem
-            sx={{
-              textDecoration: "none",
-            }}
-            component={Link}
-            to="/author"
-          >
-            <ListItemText primary="Authors" />
-          </ListItem>
+         
+
           {!isLoggedIn ? (
             <>
               <ListItem
                 sx={{
                   textDecoration: "none",
+                  color: "white",
                 }}
                 component={Link}
                 to="/login"
@@ -163,6 +148,7 @@ function Navbar() {
               <ListItem
                 sx={{
                   textDecoration: "none",
+                  color: "white",
                 }}
                 component={Link}
                 to="/signup"
@@ -172,13 +158,15 @@ function Navbar() {
             </>
           ) : (
             <ListItem
+              onClick={() => {
+                dispatch(logout());
+              }}
               sx={{
                 textDecoration: "none",
+                color: "white",
               }}
-              component={Link}
-              to="/profile"
             >
-              <ListItemText primary="Profile" />
+              <ListItemText primary="Logout" />
             </ListItem>
           )}
         </List>
