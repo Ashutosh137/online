@@ -27,9 +27,8 @@ const counterSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       localStorage.setItem("auth-token", action.payload);
-
     },
-    signupSuccess: (state, action) => {
+    signupSuccess: (state) => {
       state.isLoading = false;
       state.isSignup = true;
     },
@@ -70,7 +69,7 @@ export const {
 export const Signin = (email, password) => async (dispatch) => {
   dispatch(signinStart());
   try {
-    const data = await fetch("http://localhost:3000/login", {
+    const data = await fetch("https://online-8yiq.onrender.com", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -91,7 +90,7 @@ export const Signin = (email, password) => async (dispatch) => {
 export const signup = (email, password, username) => async (dispatch) => {
   dispatch(signupStart());
   try {
-    const data = await fetch("http://localhost:3000/signup", {
+    const data = await fetch("https://online-8yiq.onrender.com", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, username }),
@@ -109,29 +108,5 @@ export const signup = (email, password, username) => async (dispatch) => {
     dispatch(signupfailure(error.message));
   }
 };
-// export const updateuserdata = (quote) => async (dispatch, getstate) => {
-//   const { userdata } = getstate();
-
-//   userdata.favorite.includes(quote._id)
-//     ? dispatch(Removefavorite(quote._id))
-//     : dispatch(Addfavoriate(quote._id));
-//   try {
-//     const data = await fetch("http://localhost:3000/", {
-//       headers: {
-//         "Cache-Control": "no-cache",
-//       },
-//       method: "PUT",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ userdata, quote }),
-//     });
-//     const res = await data.json();
-//     if (res.error) {
-//       toast.error(res.error);
-//     }
-//   } catch (error) {
-//     dispatch(signinFailure(error.message));
-//     toast.error(error.message);
-//   }
-// };
 
 export default counterSlice.reducer;
