@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { login } = require("./routes/login,js");
 const { register } = require("./routes/login,js");
+const { dashboard } = require("./routes/dashboard");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -14,12 +15,12 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use(express.json());
-app.use(cors({ origin: "*" })); // Consider a more restrictive origin for production
+app.use(cors({ origin: "*" }));
 
-// Root route with potential optimization based on use case
 app.get("/", async (req, res) => {
-   res.json("welcome");
+  res.json("welcome");
 });
+app.get("/data/dashboard", dashboard);
 app.post("/login", login);
 app.post("/signup", register);
 

@@ -18,6 +18,8 @@ const userSchema = new mongoose.Schema({
   // Add other user details as needed
 });
 
+
+
 // Hash password before saving the user
 
 module.exports = mongoose.model('User', userSchema);
