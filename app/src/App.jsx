@@ -5,9 +5,15 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Dashboard from "./pages/dashboard";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { autoSignin } from "./redux/userdata";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(autoSignin());
+  }, []);
   return (
     <Fragment>
       <Navbar />

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import toast from "react-hot-toast";
 // import { decode } from "jsonwebtoken";
+import toast from "react-hot-toast";
+
 const counterSlice = createSlice({
   name: "userdata",
   initialState: {
@@ -22,6 +23,11 @@ const counterSlice = createSlice({
     signupStart: (state) => {
       state.isLoading = true;
       state.error = null;
+    },
+    autoSignin: (state) => {
+      if (localStorage.getItem("auth-token")) {
+        state.isLoggedIn = true;
+      }
     },
     signinSuccess: (state, action) => {
       state.isLoading = false;
@@ -51,6 +57,7 @@ const counterSlice = createSlice({
       state.email = "";
       state.uid = "";
       state.favorite = [];
+      localStorage.setItem("auth-token","")
     },
   },
 });
@@ -58,7 +65,7 @@ const counterSlice = createSlice({
 export const {
   signinFailure,
   signupStart,
-  signupSuccess,
+  signupSuccess,autoSignin,
   signupfailure,
   updatename,
   logout,

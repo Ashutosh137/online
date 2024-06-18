@@ -1,14 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Signin, signup } from "../redux/userdata";
 import { useNavigate } from "react-router-dom";
 // import FormDialog from "./forgetdialog";
 
 function LoginComponent({ role = "signin" }) {
-  const { error, isLoggedIn, isSignup } = useSelector(
+  const { error, isLoggedIn, isLoading, isSignup } = useSelector(
     (state) => state.userdata
   );
   const router = useNavigate();
@@ -116,7 +116,12 @@ function LoginComponent({ role = "signin" }) {
           </Button>
         </Box>
       </Stack>
-    
+
+      {isLoading && (
+        <Box position="absolute" left={"50%"} top={"50%"} sx="">
+          <CircularProgress />
+        </Box>
+      )}
     </Fragment>
   );
 }
